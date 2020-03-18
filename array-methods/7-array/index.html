@@ -11,35 +11,68 @@
     <script>
       function countAllPeople() {
         // your code goes here
-        console.log(got);
+        return got.houses.reduce((acc,cv) => {
+          acc += cv.people.length;
+          return acc;
+        },0)
+      
       }
 
       function peopleByHouses() {
         // your code goes here
+        return got.houses.reduce( (acc, cv) => {
+          acc[cv.name] = cv.people.length;
+          return acc;
+        }, {})
       }
 
       function everyone() {
         // your code goes here
+        return got.houses.reduce( (acc, cv) => {
+          acc.push( cv.people.map(people => people.name) );
+          return acc.flat();
+        }, [])
+
       }
 
       function nameWithS() {
         // your code goes here
+        return got.houses.reduce( (acc, cv) => {
+          acc.push(cv.people.map(people => people.name).filter(name => name.includes("s") || name.includes("S")));
+          return acc.flat();
+        }, []);
       }
 
       function nameWithA() {
         // your code goes here
+        return got.houses.reduce( (acc, cv) => {
+          acc.push(cv.people.map(people => people.name).filter(name => name.includes("A") || name.includes("a")));
+          return acc.flat();
+        }, []);
       }
 
       function surnameWithS() {
         // your code goes here
+        return got.houses.reduce( (acc, cv) => {
+          acc.push(cv.people.map(people => people.name).filter(name => name.split(" ")[1].includes("S")));
+          return acc.flat();
+        }, []);
       }
 
       function surnameWithA() {
         // your code goes here
+        return got.houses.reduce( (acc, cv) => {
+          acc.push(cv.people.map(people => people.name).filter(name => name.split(" ")[1].includes("A")));
+          return acc.flat();
+        }, []);
       }
 
       function peopleNameOfAllHouses() {
         // your code goes here
+        return got.houses.reduce((acc, cv) => {
+          acc[cv.name] = cv.people.map(people => people.name);
+          return acc;
+        }, {})
       }
 
       // Testing your result after writing your function
